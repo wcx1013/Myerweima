@@ -2,6 +2,7 @@ package com.example.myerweima;
 
 import android.app.Activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mStopSpot;
     private Button mOpenFlashlight;
     private Button mCloseFlashlight;
-    private Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onScanQRCodeSuccess(String result) {
                 Log.d("二维码扫描结果","result"+result);
-                Toast.makeText(activity,result, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,result, Toast.LENGTH_SHORT).show();
                 //扫描得到结果震动一下表示
                 vibrate();
 
@@ -58,35 +59,35 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onScanQRCodeOpenCameraError() {
-                Toast.makeText(activity, "打开相机错误！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "打开相机错误！", Toast.LENGTH_SHORT).show();
             }
         });
         mStartSpot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mZxingview.startSpot();
-                Toast.makeText(activity, "startSpot", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "startSpot", Toast.LENGTH_SHORT).show();
             }
         });
         mStopSpot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mZxingview.stopSpot();
-                Toast.makeText(activity,"stopSpot",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"stopSpot",Toast.LENGTH_SHORT).show();
             }
         });
         mOpenFlashlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mZxingview.openFlashlight();
-                Toast.makeText(activity,"openFlashlight",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"openFlashlight",Toast.LENGTH_SHORT).show();
             }
         });
         mCloseFlashlight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mZxingview.closeFlashlight();
-                Toast.makeText(activity,"closeFlashlight",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,"closeFlashlight",Toast.LENGTH_SHORT).show();
             }
         });
 
